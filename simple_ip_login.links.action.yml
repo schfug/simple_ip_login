@@ -1,0 +1,12 @@
+entity.ip_wildcard.add_form:
+  route_name: entity.ip_wildcard.add_form
+  title: 'Add IP Wildcard'
+  appears_on:
+    - entity.ip_wildcard.collection
+
+entity.ip_wildcard.login:
+  route_name: simple_ip_login.login_controller_iplogin
+  title: 'Automatic login by ip'
+  appears_on:
+    - user.login
+

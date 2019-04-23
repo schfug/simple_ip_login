@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Contains simple_ip_login.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_help().
+ */
+function simple_ip_login_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the simple_ip_login module.
+    case 'help.page.simple_ip_login':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Users can be logged in by their ip address') . '</p>';
+      return $output;
+
+    default:
+  }
+}

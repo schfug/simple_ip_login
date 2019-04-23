@@ -1,0 +1,5 @@
+name: 'Simple IP Login'
+type: module
+description: 'Users can be logged in by their ip address'
+core: 8.x
+package: 'Custom'

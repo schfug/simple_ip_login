@@ -1,0 +1,18 @@
+simple_ip_login.ip_wildcard.*:
+  type: config_entity
+  label: 'IP Wildcard config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
+    ip_wildcard:
+      type: string
+      label: 'IP Wildcard'
+    uid:
+      type: string
+      label: 'User id'

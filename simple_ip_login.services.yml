@@ -1,0 +1,6 @@
+services:
+  logout_by_ip_on_visit:
+    class: Drupal\simple_ip_login\EventSubscriber\UserPageVisitSubscriber
+    arguments: ['@session']
+    tags:
+      - { name: event_subscriber }
