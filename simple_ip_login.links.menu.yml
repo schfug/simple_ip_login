@@ -1,9 +1,9 @@
 
 # IP Wildcard menu items definition
 entity.ip_wildcard.collection:
-  title: 'IP Wildcard'
+  title: 'Simple IP Login'
   route_name: entity.ip_wildcard.collection
-  description: 'List IP Wildcard (bundles)'
-  parent: system.admin_structure
+  description: 'List IP Wildcards'
+  parent: system.admin_config_system
   weight: 99
 

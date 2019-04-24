@@ -1,0 +1,3 @@
+administer simple ip login rules:
+  title: 'Administer Simple IP Login rules'
+  description: 'Administrative settings for the Simple IP Login module'

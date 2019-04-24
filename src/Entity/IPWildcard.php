@@ -23,18 +23,18 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *     },
  *   },
  *   config_prefix = "ip_wildcard",
- *   admin_permission = "administer site configuration",
+ *   admin_permission = "administer simple ip login rules",
  *   entity_keys = {
  *     "id" = "id",
  *     "label" = "label",
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "canonical" = "/admin/structure/ip_wildcard/{ip_wildcard}",
- *     "add-form" = "/admin/structure/ip_wildcard/add",
- *     "edit-form" = "/admin/structure/ip_wildcard/{ip_wildcard}/edit",
- *     "delete-form" = "/admin/structure/ip_wildcard/{ip_wildcard}/delete",
- *     "collection" = "/admin/structure/ip_wildcard"
+ *     "canonical" = "/admin/config/ip_wildcard/{ip_wildcard}",
+ *     "add-form" = "/admin/config/ip_wildcard/add",
+ *     "edit-form" = "/admin/config/ip_wildcard/{ip_wildcard}/edit",
+ *     "delete-form" = "/admin/config/ip_wildcard/{ip_wildcard}/delete",
+ *     "collection" = "/admin/config/ip_wildcard"
  *   }
  * )
  */
