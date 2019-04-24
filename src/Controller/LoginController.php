@@ -6,11 +6,39 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Link;
 use Drupal\simple_ip_login\Entity\IPWildcard;
 use Drupal\user\Entity\User;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Class LoginController.
  */
 class LoginController extends ControllerBase {
+
+  /**
+   * @var \Symfony\Component\HttpFoundation\Session\Session
+   */
+  private $session;
+
+  /**
+   * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
+   *
+   * @return \Drupal\simple_ip_login\Controller\LoginController
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('session')
+    );
+  }
+
+
+  /**
+   * LoginController constructor.
+   *
+   * @param \Symfony\Component\HttpFoundation\Session\Session $session
+   */
+  public function __construct(Session $session) {
+    $this->session = $session;
+  }
 
   /**
    * Logs user in or show an error message
@@ -22,7 +50,7 @@ class LoginController extends ControllerBase {
 
     if ($userID = self::isWildcartUser()) {
       user_login_finalize(User::load($userID));
-      \Drupal::service('session')->set('autologin', TRUE);
+      $this->session->set('autologin', TRUE);
 
       return $this->redirect('<front>');
     }
@@ -39,7 +67,7 @@ class LoginController extends ControllerBase {
 
   /**
    * Checks if user has a ip login
-   * @return bool
+   * @return bool|int
    */
   public static function isWildcartUser() {
     $ipWildcards = IPWildcard::loadMultiple();

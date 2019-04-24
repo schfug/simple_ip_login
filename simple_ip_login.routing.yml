@@ -1,13 +1,3 @@
-
-simple_ip_login.login_by_i_p_config_form:
-  path: '/admin/simple_ip_login/settings'
-  defaults:
-    _form: '\Drupal\simple_ip_login\Form\LoginByIPConfigForm'
-    _title: 'LoginByIPConfigForm'
-  requirements:
-    _access: 'TRUE'
-  
-
 simple_ip_login.login_controller_iplogin:
   path: '/simple_ip_login/login'
   defaults:

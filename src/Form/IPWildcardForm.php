@@ -4,12 +4,39 @@ namespace Drupal\simple_ip_login\Form;
 
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\Messenger;
 use Drupal\user\Entity\User;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class IPWildcardForm.
  */
 class IPWildcardForm extends EntityForm {
+
+  /**
+   * @var \Drupal\pathauto\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
+   * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
+   *
+   * @return \Drupal\Core\Entity\EntityForm|\Drupal\simple_ip_login\Form\IPWildcardForm
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('messenger')
+    );
+  }
+
+  /**
+   * IPWildcardForm constructor.
+   *
+   * @param Messenger $messenger
+   */
+  public function __construct(Messenger $messenger) {
+    $this->messenger = $messenger;
+  }
 
   /**
    * {@inheritdoc}
@@ -57,8 +84,6 @@ class IPWildcardForm extends EntityForm {
       '#disabled' => !$ip_wildcard->isNew(),
     ];
 
-    /* You will need additional form elements for your custom properties. */
-
     return $form;
   }
 
@@ -69,17 +94,15 @@ class IPWildcardForm extends EntityForm {
     $ip_wildcard = $this->entity;
     $status = $ip_wildcard->save();
 
-    switch ($status) {
-      case SAVED_NEW:
-        drupal_set_message($this->t('Created the %label IP Wildcard.', [
-          '%label' => $ip_wildcard->label(),
-        ]));
-        break;
-
-      default:
-        drupal_set_message($this->t('Saved the %label IP Wildcard.', [
-          '%label' => $ip_wildcard->label(),
-        ]));
+    if ($status === SAVED_NEW) {
+      $this->messenger->addMessage($this->t('Created login rule: %label', [
+        '%label' => $ip_wildcard->label(),
+      ]));
+    }
+    else {
+      $this->messenger->addMessage($this->t('Saved login rule: %label', [
+        '%label' => $ip_wildcard->label(),
+      ]));
     }
     $form_state->setRedirectUrl($ip_wildcard->toUrl('collection'));
   }
