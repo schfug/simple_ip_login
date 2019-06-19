@@ -70,6 +70,14 @@ class IPWildcard extends ConfigEntityBase implements IPWildcardInterface {
   protected $user_id;
 
   /**
+   * @param int $userId
+   */
+  public function setUserId(int $userId): void {
+    $this->set('uid', (string) $userId);
+    $this->save();
+  }
+
+  /**
    * Returns IP Wildcard
    *
    * @return string|null
@@ -80,9 +88,10 @@ class IPWildcard extends ConfigEntityBase implements IPWildcardInterface {
 
   /**
    * Returns user id
+   *
    * @return int|null
    */
   public function getUserId(): int {
-    return $this->user_id ?? 1;
+    return $this->get('uid') ?? 1;
   }
 }

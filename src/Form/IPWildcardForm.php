@@ -92,6 +92,10 @@ class IPWildcardForm extends EntityForm {
    */
   public function save(array $form, FormStateInterface $form_state) {
     $ip_wildcard = $this->entity;
+    /**
+     * @var $ip_wildcard \Drupal\simple_ip_login\Entity\IPWildcard
+     */
+    $ip_wildcard->setUserId((int)$form_state->getValue('uid'));
     $status = $ip_wildcard->save();
 
     if ($status === SAVED_NEW) {
