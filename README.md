@@ -11,7 +11,7 @@ CONTENTS OF THIS FILE
 INTRODUCTION
 ------------
 
-This module allows you to login in users by their ip address.
+This module allows users to login by their ip address.
 
  * For a full description of the module, visit the project page:
    https://www.drupal.org/project/simple_ip_login
@@ -23,13 +23,13 @@ This module allows you to login in users by their ip address.
 REQUIREMENTS
 ------------
 
-This module requires no modules outside of Drupal core.
+This module requires no modules other than Drupal core.
 
 
 INSTALLATION
 ------------
 
- * Install the Simple IP Login module as you would normally install a
+ * Install the Simple IP Login module as you normally would install a
    contributed Drupal module. Visit https://www.drupal.org/node/1897420 for
    further information.
 
