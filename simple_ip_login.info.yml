@@ -2,4 +2,5 @@ name: 'Simple IP Login'
 type: module
 description: 'Users can be logged in using their ip address'
 core: 8.x
-package: 'Custom'
+package: 'User Access & Authentication'
+configure: entity.ip_wildcard.collection
