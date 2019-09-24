@@ -44,7 +44,7 @@ class UserPageVisitSubscriber implements EventSubscriberInterface {
    */
   public function auto_logout(Event $event): void {
     $isAutoLogin = (bool) $this->sessionService->get('autologin');
-    if ($isAutoLogin && !LoginController::isWildcartUser()) {
+    if ($isAutoLogin && !LoginController::isWildcardUser()) {
       user_logout();
     }
   }

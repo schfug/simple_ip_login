@@ -48,7 +48,7 @@ class LoginController extends ControllerBase {
    */
   public function iplogin() {
 
-    if ($userID = self::isWildcartUser()) {
+    if ($userID = self::isWildcardUser()) {
       user_login_finalize(User::load($userID));
       $this->session->set('autologin', TRUE);
 
@@ -69,7 +69,7 @@ class LoginController extends ControllerBase {
    * Checks if user has a ip login
    * @return bool|int
    */
-  public static function isWildcartUser() {
+  public static function isWildcardUser() {
     $ipWildcards = IPWildcard::loadMultiple();
 
     foreach ($ipWildcards as $ipWildcard) {
