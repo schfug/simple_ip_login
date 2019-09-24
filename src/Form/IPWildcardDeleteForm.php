@@ -16,7 +16,7 @@ class IPWildcardDeleteForm extends EntityConfirmFormBase {
   /**
    * @var MessengerInterface
    */
-  private $messenger;
+  protected $messenger;
 
   /**
    * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
