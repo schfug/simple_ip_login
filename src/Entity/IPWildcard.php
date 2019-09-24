@@ -74,7 +74,6 @@ class IPWildcard extends ConfigEntityBase implements IPWildcardInterface {
    */
   public function setUserId(int $userId): void {
     $this->set('uid', (string) $userId);
-    $this->save();
   }
 
   /**
