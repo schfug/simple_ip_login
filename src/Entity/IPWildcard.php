@@ -30,7 +30,6 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "canonical" = "/admin/config/ip_wildcard/{ip_wildcard}",
  *     "add-form" = "/admin/config/ip_wildcard/add",
  *     "edit-form" = "/admin/config/ip_wildcard/{ip_wildcard}/edit",
  *     "delete-form" = "/admin/config/ip_wildcard/{ip_wildcard}/delete",
