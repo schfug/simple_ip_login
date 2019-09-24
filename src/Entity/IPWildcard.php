@@ -90,6 +90,6 @@ class IPWildcard extends ConfigEntityBase implements IPWildcardInterface {
    * @return int|null
    */
   public function getUserId(): int {
-    return $this->get('uid') ?? 1;
+    return $this->get('uid') ?? 0;
   }
 }
