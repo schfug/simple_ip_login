@@ -4,9 +4,9 @@ namespace Drupal\simple_ip_login\Form;
 
 use Drupal\Core\Entity\EntityConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Builds the form to delete IP Wildcard entities.
@@ -14,9 +14,9 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class IPWildcardDeleteForm extends EntityConfirmFormBase {
 
   /**
-   * @var \Symfony\Component\HttpFoundation\Session\Session
+   * @var MessengerInterface
    */
-  private $session;
+  private $messenger;
 
   /**
    * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
@@ -25,18 +25,19 @@ class IPWildcardDeleteForm extends EntityConfirmFormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('session')
+      $container->get('messenger')
     );
   }
 
   /**
    * LoginController constructor.
    *
-   * @param \Symfony\Component\HttpFoundation\Session\Session $session
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    */
-  public function __construct(Session $session) {
-    $this->session = $session;
+  public function __construct(MessengerInterface $messenger) {
+    $this->messenger = $messenger;
   }
+
   /**
    * {@inheritdoc}
    */
@@ -65,7 +66,7 @@ class IPWildcardDeleteForm extends EntityConfirmFormBase {
     $this->entity->delete();
 
     $this->messenger->addMessage(
-      $this->t('Deleted @label',
+      $this->t('Deleted IP Wildcard @label',
         [
           '@label' => $this->entity->label(),
         ]
